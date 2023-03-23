@@ -8,39 +8,45 @@
 import SwiftUI
 
 struct BookMainView: View {
+    @EnvironmentObject var model: BookModel
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("My Library")
-                .bold()
-                .font(.largeTitle)
-                .padding(.leading)
-            
-            ScrollView {
-                VStack(spacing: 40) {
-                    ForEach(0..<5, id: \.self) { i in
-                        Button(action: {}) {
-                            VStack(alignment: .leading) {
-                                Text("Amazing Words")
-                                    .foregroundColor(.black)
-                                    .bold()
-                                    .font(.title)
-                                Text("Sir Prise Party")
-                                    .foregroundColor(.black)
-                                Image("cover1")
-                                    .resizable()
-                                    .clipped()
-                                    .aspectRatio(contentMode: .fill)
-                            }
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: 10)
-                                .fill(.white)
-                                .shadow(color: .gray, radius: 4, x: -5, y: 5))
+        NavigationView {
+            VStack(alignment: .leading) {
+                Text("My Library")
+                    .bold()
+                    .font(.largeTitle)
+                    .padding(.leading)
+                
+                ScrollView {
+                    VStack(spacing: 40) {
+                        ForEach(0..<model.books.count, id: \.self) { i in
+                            NavigationLink(destination: BookDetailsView(book: model.books[i]), label: {
+                                VStack(alignment: .leading) {
+                                    Text(model.books[i].title)
+                                        .foregroundColor(.black)
+                                        .bold()
+                                        .font(.title)
+                                        .multilineTextAlignment(.leading)
+                                    Text(model.books[i].author)
+                                        .italic()
+                                        .foregroundColor(.black)
+                                    Image(model.books[i].image)
+                                        .resizable()
+                                        .clipped()
+                                        .aspectRatio(contentMode: .fill)
+                                }
+                                .padding()
+                                .background(RoundedRectangle(cornerRadius: 10)
+                                    .fill(.white)
+                                    .shadow(color: .gray, radius: 4, x: -5, y: 5))
+                            })
+                            .padding([.top, .bottom], 5)
                         }
-                        .padding([.top, .bottom], 5)
+                        
                     }
-                    
+                    .padding([.leading, .trailing])
                 }
-                .padding([.leading, .trailing])
             }
         }
     }
@@ -49,5 +55,6 @@ struct BookMainView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         BookMainView()
+            .environmentObject(BookModel())
     }
 }

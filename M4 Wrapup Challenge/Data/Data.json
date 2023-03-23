@@ -1,5 +1,6 @@
 [
     {
+        "image": "cover1",
         "title": "Amazing Words",
         "author": "Sir Prise Party",
         "isFavourite": false,
@@ -35,6 +36,7 @@
         ]
     },
     {
+        "image": "cover2",
         "title": "Literature For Reading",
         "author": "Sir Lee Oldman",
         "isFavourite": false,
@@ -70,6 +72,7 @@
         ]
     },
     {
+        "image": "cover3",
         "title": "Text and More",
         "author": "Sir Vey Sample",
         "isFavourite": false,
@@ -105,6 +108,7 @@
         ]
     },
     {
+        "image": "cover4",
         "title": "Characters, Words, and Paragraphs",
         "author": "Sir Cull K",
         "isFavourite": false,
@@ -140,6 +144,7 @@
         ]
     },
     {
+        "image": "cover5",
         "title": "A Book, I Think",
         "author": "Sir Vivor Island",
         "isFavourite": false,

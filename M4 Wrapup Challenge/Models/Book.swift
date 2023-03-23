@@ -8,6 +8,7 @@
 import Foundation
 
 class Book: Decodable {
+    var image: String
     var title: String
     var author: String
     var isFavourite: Bool

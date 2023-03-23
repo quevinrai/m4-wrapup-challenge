@@ -9,10 +9,11 @@ import SwiftUI
 
 struct BookDetailsView: View {
     @State var ratingIndex = 1
+    var book: Book
     
     var body: some View {
         VStack(alignment: .leading, spacing: 40) {
-            Text("Amazing Words")
+            Text(book.title)
                 .bold()
                 .font(.largeTitle)
                 .padding(.leading)
@@ -23,9 +24,11 @@ struct BookDetailsView: View {
                         VStack {
                             Text("Read Now!")
                                 .font(.title)
-                            Image("cover1")
-                                .resizable()
-                                .frame(width: geo.size.width/2, height: geo.size.height/2)
+                            NavigationLink(destination: BookPagesView(book: book)) {
+                                Image(book.image)
+                                    .resizable()
+                                    .frame(width: geo.size.width/2, height: geo.size.height/2)
+                            }
                         }
                         
                         VStack(spacing: 20) {
@@ -62,7 +65,10 @@ struct BookDetailsView: View {
 
 struct BookDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        BookDetailsView()
+        let model = BookModel()
+        
+        BookDetailsView(book: model.books[0])
+            .environmentObject(BookModel())
     }
 }
 

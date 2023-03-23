@@ -8,20 +8,33 @@
 import SwiftUI
 
 struct BookPagesView: View {
+    @State var pageSelectionIndex = 4
+    var book: Book
+    
     var body: some View {
         VStack {
-            ScrollView {
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu congue lacus, ac laoreet felis. Integer eros tortor, blandit id magna non, pharetra sodales urna. Donec egestas sed leo eu gravida. Quisque condimentum iaculis sem quis venenatis. Duis consectetur blandit elit porttitor tincidunt. Praesent mi libero, pulvinar ac nibh vitae, euismod feugiat elit. Sed elementum libero odio.\n\nVestibulum efficitur urna ac risus suscipit ullamcorper. Vestibulum et aliquet erat. Ut lobortis pretium nulla, a porta ipsum accumsan ut. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec at ullamcorper purus, sed ultricies mauris. Morbi facilisis sollicitudin purus in commodo. Cras maximus id mauris non pulvinar. Maecenas vitae pharetra leo. Pellentesque dolor ligula, ullamcorper sed ultricies eget, sollicitudin sit amet sapien. Vivamus in neque id nunc rutrum mattis at vitae velit. Sed vel vestibulum massa. Quisque sollicitudin sem ac massa interdum dignissim. Etiam metus ligula, facilisis at posuere et, mattis ut quam. Morbi urna arcu, egestas ut imperdiet et, molestie eget dolor. Vestibulum cursus, erat ac vestibulum congue, dolor felis iaculis lectus, vel pellentesque mauris arcu nec justo.")
-                    .padding([.leading, .trailing])
+            TabView(selection: $pageSelectionIndex) {
+                ForEach(0..<book.content.count, id: \.self) { i in
+//                    Text(book.content[i])
+//                        .tag(i + 1)
+//                        .padding()
+                    BookPage(bookContent: book.content[i])
+                    .tag(i + 1)
+                    .padding()
+                }
+                
             }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
-            Text("1")
+            Text("\(pageSelectionIndex)")
         }
     }
 }
 
 struct BookPagesView_Previews: PreviewProvider {
     static var previews: some View {
-        BookPagesView()
+        let model = BookModel()
+        
+        BookPagesView(book: model.books[0])
     }
 }
