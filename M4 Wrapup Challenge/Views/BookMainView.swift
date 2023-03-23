@@ -16,7 +16,7 @@ struct BookMainView: View {
                 .padding(.leading)
             
             ScrollView {
-                VStack(spacing: 20) {
+                VStack(spacing: 40) {
                     ForEach(0..<5, id: \.self) { i in
                         Button(action: {}) {
                             VStack(alignment: .leading) {

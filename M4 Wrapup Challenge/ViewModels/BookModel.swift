@@ -7,6 +7,10 @@
 
 import Foundation
 
-class BookModel {
+class BookModel: ObservableObject {
+    @Published var books = [Book]()
     
+    init() {
+        self.books = DataService.getLocalData()
+    }
 }
