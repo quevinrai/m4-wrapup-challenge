@@ -1,5 +1,5 @@
 //
-//  BookPagesView.swift
+//  ContentView.swift
 //  M4 Wrapup Challenge
 //
 //  Created by Quevin Bambasi on 3/22/23.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct BookPageContent: View {
+struct BookPreview: View {
     var body: some View {
         Text("Hello")
     }
 }
 
-struct BookPagesView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        BookPageContent()
+        BookPreview()
     }
 }
