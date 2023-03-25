@@ -29,10 +29,10 @@ struct BookPageContent: View {
         }
         .tabViewStyle(PageTabViewStyle())
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
-//        .onChange(of: page) { newValue in
-//            model.updateCurrentPage(forID: book.id, page: page)
-//        }
-//        .onAppear { page = book.currentPage }
+        .onChange(of: page) { newValue in
+            model.updateCurrentPage(forID: book.id, page: page)
+        }
+        .onAppear { page = book.currentPage }
     }
 }
 
