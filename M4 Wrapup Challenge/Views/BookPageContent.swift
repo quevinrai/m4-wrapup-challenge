@@ -23,16 +23,17 @@ struct BookPageContent: View {
                     Spacer()
                     
                     Text("\(page + 1)")
-                .padding()
                 }
             }
+            .padding()
         }
         .tabViewStyle(PageTabViewStyle())
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
-        .onChange(of: page) { newValue in
+        .onChange(of: page, perform: { newValue in
             model.updateCurrentPage(forID: book.id, page: page)
-        }
+        })
         .onAppear { page = book.currentPage }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

@@ -11,7 +11,7 @@ struct BookList: View {
     @EnvironmentObject var model : BookModel
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 30) {
                     ForEach(model.books) { book in
